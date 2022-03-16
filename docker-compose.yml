@@ -10,7 +10,7 @@ services:
     environment:
         - HOST=mongo
     ports:
-        - "3000:3000"   
+        - "3030:3030"   
     depends_on: [mongo]
 
   mongo:
@@ -28,4 +28,4 @@ services:
     container_name: frontend
     restart: always
     ports:
-        - "8080:8080"
+        - "8888:8888"
