@@ -7,19 +7,18 @@ services:
       dockerfile: Dockerfile
     container_name: nodejs
     restart: always
-    environment:
-        - HOST=mongo
     ports:
-        - "3000:3000"   
-    depends_on: [mongo]
+        - "3000:3000" 
+    networks:
+        - nodenetwork  
 
   mongo:
     container_name: mongo
     image: mongo
-    ports:
-        - "27017:27017"
     volumes:
         - mongovolume:/data/db
+    networks:
+        - mongonetwork
   
   frontend:
     build: 
@@ -29,6 +28,14 @@ services:
     restart: always
     ports:
         - "8000:8000"
+    networks:
+        - frontendnetwork
 
 volumes:
   mongovolume:
+
+networks:
+  mongonetwork:
+  nodenetwork:
+  frontendnetwork:
+

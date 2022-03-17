@@ -1,5 +1,5 @@
 const http = require('http')
-const app = require('./app')
+const app = require('./app').default
 const mongoose = require('mongoose')
 require('dotenv').config()
 
@@ -22,3 +22,5 @@ server.listen(port, (err) => {
 	}
 	console.log('Server is running on port ' + port)
 })
+
+// ${process.env.HOST}
